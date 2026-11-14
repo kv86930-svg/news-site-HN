@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalPulse 24/7 - Live News Network</title>
+    <style>
+        :root {
+            --tv-red: #cc0000;
+            --tv-dark: #111111;
+            --tv-panel: #1a1a1a;
+            --tv-border: #333333;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --bg-body: #0b0f19;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        /* Top Utility Bar */
+        .top-bar {
+            background-color: #000000;
+            border-bottom: 1px solid var(--tv-border);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding: 0.4rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .top-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .top-links a:hover {
+            color: white;
+        }
+
+        /* Main Header & Navigation */
+        header {
+            background-color: var(--tv-dark);
+            border-bottom: 3px solid var(--tv-red);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            background-color: var(--tv-red);
+            color: white;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .live-pill {
+            background: rgba(204, 0, 0, 0.2);
+            border: 1px solid var(--tv-red);
+            color: #ff4d4d;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            background-color: var(--tv-red);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Navigation Links & Search */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.25rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--tv-red);
+        }
+
+        .search-box {
+            display: flex;
+            background: var(--tv-panel);
+            border: 1px solid var(--tv-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            color: white;
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .search-box button {
+            background: var(--tv-red);
+            border: none;
+            color: white;
+            padding: 0 0.8rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Breaking News Ticker Strip */
+        .ticker-strip {
+            background-color: var(--tv-panel);
+            border-bottom: 1px solid var(--tv-border);
+            padding: 0.6rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .ticker-label {
+            background-color: var(--tv-red);
+            color: white;
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ticker-content {
+            color: #cbd5e1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Layout Grid */
+        .main-container {
+            max-width: 1300px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2.2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+            .top-bar, .nav-menu {
+                display: none;
+            }
+        }
+
+        /* Featured & News Cards */
+        .featured-article {
+            background: var(--tv-panel);
+            border: 1px solid var(--tv-border);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .featured-article:hover {
+            border-color: var(--tv-red);
+        }
+
+        .article-media-placeholder {
+            background: #262626;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--tv-border);
+        }
+
+        .article-body {
+            padding: 1.5rem;
+        }
+
+        .cat-tag {
+            color: var(--tv-red);
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .article-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .article-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--tv-border);
+            padding-top: 0.75rem;
+        }
+
+        /* Sub Feed Grid */
+        .sub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media(max-width: 600px) {
+            .sub-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sub-card {
+            background: var(--tv-panel);
+            border: 1px solid var(--tv-border);
+            border-radius: 6px;
+            padding: 1.25rem;
+        }
+
+        .sub-card h3 {
+            font-size: 1.1rem;
+            color: white;
+            margin: 0.5rem 0;
+        }
+
+        /* Sidebar Widgets */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .tv-widget {
+            background: var(--tv-panel);
+            border: 1px solid var(--tv-border);
+            border-radius: 6px;
+            padding: 1.5rem;
+        }
+
+        .tv-widget h3 {
+            font-size: 1rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--tv-red);
+        }
+
+        .trending-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .trending-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .t-num {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--tv-red);
+        }
+
+        .trending-item a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .trending-item a:hover {
+            color: var(--tv-red);
+        }
+
+        /* Privacy Policy Section */
+        .privacy-section {
+            max-width: 1300px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .privacy-box {
+            background: var(--tv-panel);
+            border: 1px solid var(--tv-border);
+            border-radius: 6px;
+            padding: 2.5rem;
+        }
+
+        .privacy-box h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .privacy-box h3 {
+            color: white;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .privacy-box p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            border-top: 1px solid var(--tv-border);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 4rem;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <span>Global Broadcast Edition</span>
+        <div class="top-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact News Desk</a>
+        </div>
+    </div>
+
+    <!-- Main Network Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <div class="logo">Global<span>Pulse</span></div>
+                <div class="live-pill">
+                    <div class="live-dot"></div> Live 24/7
+                </div>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">World</a></li>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Sports</a></li>
+                </ul>
+            </nav>
+
+            <div class="search-box">
+                <input type="text" placeholder="Search news...">
+                <button type="button">🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breaking News Ticker Strip -->
+    <div class="ticker-strip">
+        <span class="ticker-label">Breaking News</span>
+        <div class="ticker-content">
+            Major technology updates deployed globally • International sports championships schedule announced.
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="main-container">
+        
+        <main>
+            <article class="featured-article">
+                <div class="article-media-placeholder">[ BROADCAST VIDEO FEED ]</div>
+                <div class="article-body">
+                    <span class="cat-tag">Technology & Infrastructure</span>
+                    <h1 class="article-title">Global Network Standards Shift Toward High-Performance Portable Frameworks</h1>
+                    <p class="article-desc">Industry analysts report rapid acceleration in lightweight mobile development tools, allowing developers to manage deployment and scripting efficiently from portable devices.</p>
+                    <div class="article-meta">
+                        <span>Updated recently</span>
+                        <span>4 min read</span>
+                    </div>
+                </div>
+            </article>
+
+            <div class="sub-grid">
+                <div class="sub-card">
+                    <span class="cat-tag">World News</span>
+                    <h3>International Trade Summit Concludes with Focus on Digital Connectivity</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">Delegates outline parameters for cooperative data protocols.</p>
+                </div>
+                <div class="sub-card">
+                    <span class="cat-tag">Sports</span>
+                    <h3>Strategic Board Championships Showcase Advanced Tactics</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">Competitors battle through intense elimination brackets.</p>
+                </div>
+            </div>
+        </main>
+
+        <aside>
+            <div class="tv-widget">
+                <h3>Trending Bulletins</h3>
+                <ul class="trending-list">
+                    <li class="trending-item">
+                        <span class="t-num">1</span>
+                        <a href="#">Advanced Hardware Optimization Tips</a>
+                    </li>
+                    <li class="trending-item">
+                        <span class="t-num">2</span>
+                        <a href="#">Global Cricket League Highlights</a>
+                    </li>
+                    <li class="trending-item">
+                        <span class="t-num">3</span>
+                        <a href="#">Minimalist UI Design Standards</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Privacy Policy Section Required for AdSense -->
+    <section class="privacy-section" id="privacy">
+        <div class="privacy-box">
+            <h2>Privacy Policy</h2>
+            <p>Welcome to GlobalPulse News Network. We respect your privacy rights and maintain secure data practices.</p>
+
+            <h3>1. Data Collection</h3>
+            <p>We collect non-personal browser telemetry strictly to maintain server uptime, stream performance, and content delivery speed.</p>
+
+            <h3>2. Cookie Compliance</h3>
+            <p>Our web platform utilizes standard session cookies to preserve user viewing preferences. You retain full control over cookie management via your device browser settings.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 GlobalPulse 24/7 News Network. All rights reserved.</p>
+    </footer>
+
+</body>
+  </html>
+  
