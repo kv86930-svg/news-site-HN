@@ -712,3 +712,39 @@
 
 </body>
 </html>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#16181d;--mute:#60666f;--line:#e2ded4;--red:#c8102e;--navy:#10243f}
+:root.dk{--bg:#0e1116;--card:#171b22;--ink:#eceef2;--mute:#9aa3b2;--line:#2a313c;--red:#ff4d63;--navy:#0a1626}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,"Noto Sans Telugu",system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+.bar{background:var(--navy);color:#fff;font-size:.8rem}
+.bar .in,.mast,.main,.foot{max-width:1120px;margin:0 auto;padding-left:16px;padding-right:16px}
+.bar .in{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:6px;padding-bottom:6px}
+.tg{display:flex;gap:6px}
+.tg button{background:none;border:1px solid #ffffff55;color:#fff;border-radius:6px;padding:3px 10px}
+.tg button.on{background:#fff;color:var(--navy);font-weight:700}
+.mast{display:flex;align-items:center;gap:14px;padding-top:16px;padding-bottom:12px;flex-wrap:wrap}
+.logo{font:700 2rem/1 "Source Serif 4",Georgia,serif}
+.logo b{color:var(--red)}
+.live{background:var(--red);color:#fff;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:4px;animation:p 1.6s infinite}
+@keyframes p{50%{opacity:.55}}
+.sr{margin-left:auto;display:flex;gap:6px;flex:1;max-width:340px;min-width:200px}
+.sr input{flex:1;min-width:0;font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.ib{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:8px 12px;display:inline-block}
+.ib:hover{border-color:var(--red)}
+.tick{background:var(--red);color:#fff;overflow:hidden;white-space:nowrap}
+.tick div{display:inline-block;padding:7px 0 7px 100%;animation:t 60s linear infinite;font-weight:500}
+.tick:hover div{animation-play-state:paused}
+@keyframes t{to{transform:translateX(-100%)}}
+.nav{display:flex;gap:8px;overflow-x:auto;padding:12px 16px;position:sticky;top:0;background:var(--bg);z-index:5;border-bottom:1px solid var(--line)}
+.nav>div{display:flex;gap:8px;margin:0 auto;width:100%;max-width:1088px}
+.nav button{white-space:nowrap;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 15px}
+.nav button.on{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;padding-top:20px;padding-bottom:30px}
+@media(max-width:860px){.main{grid-template-columns:1fr}}
+h2.sec{font:700 1.3rem "Source Serif 4",Georgia,serif;margin:0 0 12px;padding-bottom:6px;border-bottom:3px solid var(--red);display:inline-block}
+.hero{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:22px}
+.hero .ph{height:280px}
+.tx{padding:14px 16px}
+.hero .tx{
