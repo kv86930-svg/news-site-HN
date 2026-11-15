@@ -524,3 +524,191 @@
 </body>
   </html>
   
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalPulse 24/7 - తెలంగాణ, జాతీయ & అంతర్జాతీయ వార్తలు</title>
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+            --card-bg: #fff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        nav {
+            background-color: #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px 10px;
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            border-radius: 4px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        h2 {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            color: #222;
+            margin-top: 40px;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+        .news-card h3 {
+            margin-top: 0;
+            color: #111;
+            font-size: 18px;
+        }
+        .news-card p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+        .meta-info {
+            font-size: 12px;
+            color: #888;
+            margin-top: 10px;
+            display: block;
+        }
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>GlobalPulse 24/7</h1>
+        <p>తెలంగాణ, జాతీయ మరియు అంతర్జాతీయ తాజా వార్తల స్రవంతి</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#telangana">తెలంగాణ వార్తలు</a></li>
+            <li><a href="#national">జాతీయ వార్తలు</a></li>
+            <li><a href="#world">అంతర్జాతీయ వార్తలు</a></li>
+            <li><a href="#sports">క్రీడలు</a></li>
+            <li><a href="#tech">టెక్నాలజీ</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- తెలంగాణ వార్తలు -->
+        <section id="telangana">
+            <h2>తెలంగాణ లోకల్ అప్‌డేట్స్</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <h3>హైదరాబాద్‌లో ఐటీ కారిడార్ విస్తరణ</h3>
+                    <p>నగరంలో ఐటీ రంగ అభివృద్ధికి ప్రభుత్వం పెద్దపీట వేస్తోంది. కొత్త కంపెనీల ఏర్పాటుతో వేలాది ఉద్యోగ అవకాశాలు రానున్నాయి.</p>
+                    <span class="meta-info">సమయం: 2 గంటల క్రితం | కేటగిరీ: తెలంగాణ</span>
+                </div>
+                <div class="news-card">
+                    <h3>తెలంగాణ వ్యాప్తంగా ఉత్సాహంగా వ్యవసాయ పనులు</h3>
+                    <p>ప్రస్తుత సీజన్‌లో వర్షాలు అనుకూలించడంతో రైతులు వరి మరియు ఇతర పంటల సాగును ముమ్మరం చేశారు.</p>
+                    <span class="meta-info">సమయం: 4 గంటల క్రితం | కేటగిరీ: వ్యవసాయం</span>
+                </div>
+                <div class="news-card">
+                    <h3>వరంగల్ మరియు ఖమ్మంలో ప్రత్యేక అభివృద్ధి కార్యక్రమాలు</h3>
+                    <p>స్థానిక ప్రజల సౌకర్యార్థం రోడ్లు, డ్రైనేజీ వ్యవస్థల ఆధునీకరణకు మున్సిపల్ అధికారులు ప్రత్యేక నిధులు కేటాయించారు.</p>
+                    <span class="meta-info">సమయం: 5 గంటల క్రితం | కేటగిరీ: జిల్లా వార్తలు</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- జాతీయ వార్తలు -->
+        <section id="national">
+            <h2>జాతీయ వార్తలు (India News)</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <h3>భారతదేశంలో డిజిటల్ ఎకానమీ రికార్డు వృద్ధి</h3>
+                    <p>దేశవ్యాప్తంగా డిజిటల్ లావాదేవీలు భారీగా పెరుగుతున్నాయి. ఆర్థిక రంగంలో సాంకేతికత పాత్ర మరింత బలపడుతోంది.</p>
+                    <span class="meta-info">సమయం: 1 గంట క్రితం | కేటగిరీ: జాతీయ</span>
+                </div>
+                <div class="news-card">
+                    <h3>సైన్స్ మరియు స్పేస్ రంగంలో భారత్ విజయాలు</h3>దు
+                    <p>ఇస్రో భవిష్యత్తులో చేపట్టబోయే ప్రయోగాలకు సంబంధించి శాస్త్రవేత్తలు ఏర్పాట్లు వేగవంతం చేశారు.</p>
+                    <span class="meta-info">సమయం: 3 గంటల క్రితం | కేటగిరీ: సైన్స్</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- అంతర్జాతీయ వార్తలు -->
+        <section id="world">
+            <h2>అంతర్జాతీయ వార్తలు (World News)</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <h3>గ్లోబల్ మార్కెట్‌లో టెక్నాలజీ ట్రెండ్స్</h3>
+                    <p>ప్రపంచవ్యాప్తంగా ఆర్టిఫిషియల్ ఇంటెలిజెన్స్ మరియు ఆటోమేషన్ టెక్నాలజీలపై పెట్టుబడులు గణనీయంగా పెరుగుతున్నాయి.</p>
+                    <span class="meta-info">సమయం: 6 గంటల క్రితం | కేటగిరీ: ప్రపంచం</span>
+                </div>
+                <div class="news-card">
+                    <h3>అంతర్జాతీయ అంతరిక్ష కేంద్రానికి కొత్త పరిశోధన బృందం</h3>
+                    <p>వివిధ దేశాల వ్యోమగాములు సంయుక్తంగా స్పేస్ రీసెర్చ్ కోసం కొత్త ప్రయోగాలు ప్రారంభించారు.</p>
+                    <span class="meta-info">సమయం: 8 గంటల క్రితం | కేటగిరీ: అంతర్జాతీయ</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 GlobalPulse 24/7. అన్ని హక్కులు భద్రపరచబడ్డాయి.</p>
+    </footer>
+
+</body>
+</html>
